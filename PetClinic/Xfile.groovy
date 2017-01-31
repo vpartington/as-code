@@ -1,5 +1,5 @@
 import com.xebialabs.deployit.plugin.api.reflect.Type
-def xlDeployServer = Type.valueOf('xldeploy.XLDeployServer').descriptor.newInstance('/Configuration/Configuration526302744')
+def xlDeployServer = Type.valueOf('xldeploy.XLDeployServer').descriptor.newInstance('Configuration/Custom/Configuration526302744')
 
 def latestPetClinicVersion = globalVariables['global.LATEST_PETCLINIC_VERSION']
 def parentReleaseTitle = release.title
