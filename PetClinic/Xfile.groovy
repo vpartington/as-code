@@ -10,6 +10,10 @@ def subRelease = xlr {
     phases {
       phase("Prod") {
         tasks {
+          manual("Update firewall rules") {
+            description "Update the firewall rules for v$petClinicVersion of PetClinic"
+            team "Network"
+          }
           custom('Deploy to Prod') {
             script {
               type 'xldeploy.Deploy'
