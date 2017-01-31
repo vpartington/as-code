@@ -1,6 +1,6 @@
 import com.xebialabs.deployit.plugin.api.reflect.Type
 
-def xlDeployServer = Type.valueOf('xldeploy.XLDeployServer').descriptor.newInstance('/Configuration/Configuration1828100')
+def xlDeployServer = Type.valueOf('xldeploy.XLDeployServer').descriptor.newInstance('/Configuration/Configuration526302744')
 
 def parentReleaseTitle = release.title
 
