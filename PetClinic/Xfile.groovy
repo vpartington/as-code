@@ -1,22 +1,23 @@
 import com.xebialabs.deployit.plugin.api.reflect.Type
-
 def xlDeployServer = Type.valueOf('xldeploy.XLDeployServer').descriptor.newInstance('/Configuration/Configuration526302744')
 
+def latestPetClinicVersion = globalVariables['global.LATEST_PETCLINIC_VERSION']
 def parentReleaseTitle = release.title
 
 def subRelease = xlr {
-  release("Pipeline for $parentReleaseTitle") {
+  release("Deploy PetClinic v$latestPetClinicVersion to Prod") {
+    description "Created from DSL, started from $parentReleaseTitle"
     phases {
-      phase("Deploy to prod") {
+      phase("Prod") {
         tasks {
-          custom('Deploy package to Prod') {
+          custom('Deploy to Prod') {
             script {
               type 'xldeploy.Deploy'
               server xlDeployServer
-              deploymentPackage 'Java EE/PetClinic-ear/4.10'
-              deploymentEnvironment 'Demo/Java - WLS (Server-3)'
+              deploymentPackage "Java EE/PetClinic-ear/$latestPetClinicVersion"
+              deploymentEnvironment 'Demo/Java - WLS, Server-4 - Prod'
             }
-            team "Release Admins"
+            team 'Release Admins'
           }
         }
       }
