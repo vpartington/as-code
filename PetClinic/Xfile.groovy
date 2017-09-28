@@ -27,7 +27,7 @@ def subRelease = xlr {
             script {
               type 'xldeploy.Deploy'
               server xlDeployServer
-              deploymentPackage 'Java EE/PetClinic-ear/$petClinicVersion'
+              deploymentPackage "Java EE/PetClinic-ear/$petClinicVersion"
               deploymentEnvironment 'Java EE/WLS - Prod (Server-4)'
             }
             team 'Release Admins'
