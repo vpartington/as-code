@@ -1,5 +1,14 @@
-import com.xebialabs.deployit.plugin.api.reflect.Type
-def xlDeployServer = Type.valueOf('xldeploy.XLDeployServer').descriptor.newInstance('Configuration/Custom/Configuration526302744')
+def server(type, title) {
+    def cis = configurationApi.searchByTypeAndTitle(type, title)
+    if (cis.isEmpty()) {
+        throw new RuntimeException("No CI found for the type '${type}' and title '${title}'")
+    }
+    if (cis.size() > 1) {
+        throw new RuntimeException("More than one CI found for the type '${type}' and title '${title}'")
+    }
+    cis.get(0)
+}
+def xlDeployServer = server('xldeploy.XLDeployServer','XL Deploy (token)')
 
 def petClinicVersion = releaseVariables['PETCLINIC_VERSION']
 def parentReleaseTitle = release.title
